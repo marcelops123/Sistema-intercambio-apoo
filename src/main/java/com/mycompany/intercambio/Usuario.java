@@ -1,22 +1,54 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
-
 package com.mycompany.intercambio;
 
-/**
- *
- * @author Marcelin
- */
+import java.util.ArrayList;
+
 public class Usuario {
 
-   private int id;
-   private String nome;
-   private String email;
-   private String telefone;
-   
-   public boolean autenticar(){
-     //  
-     return true;
-   }
+    private int id;
+    private String nome;
+    private String email;
+    private String telefone;
+
+    private static ArrayList<Usuario> usuarios = new ArrayList<>();
+
+    public boolean autenticar() {
+        for (int i = 0; i < usuarios.size(); i++) {
+            if (usuarios.get(i).id == this.id && usuarios.get(i).email.equals(this.email)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
 }

@@ -1,33 +1,41 @@
 package com.mycompany.intercambio;
 
 import java.util.ArrayList;
+import java.util.Date;
 
-public class Bolsa extends UsuarioIntercambio {
+public class Intercambio extends Usuario {
 
     private int id;
-    private String descricao;
-    private float valor;
+    private String destino;
     private String tipo;
+    private int duracao;
+    private Date dataInicio;
+    private Date dataFim;
+    private String status;
 
-    private static ArrayList<Bolsa> bolsas = new ArrayList<>();
+    private static ArrayList<UsuarioIntercambio> participantes = new ArrayList<>();
+    private static ArrayList<Intercambio> intercambios = new ArrayList<>();
 
-    public boolean alocarBolsa(UsuarioIntercambio u) {
-        for (int i = 0; i < bolsas.size(); i++) {
-            if (bolsas.get(i).id == this.id) {
-                return false;
+    public void inscreverParticipante(UsuarioIntercambio user) {
+        for (int i = 0; i < participantes.size(); i++) {
+            if (participantes.get(i).equals(user)) {
+                return;
             }
         }
-        bolsas.add(this);
-        return true;
+        participantes.add(user);
     }
 
-    public float consultarValor() {
-        for (int i = 0; i < bolsas.size(); i++) {
-            if (bolsas.get(i).id == this.id) {
-                return bolsas.get(i).valor;
-            }
+    public void alterarStatus(String status) {
+        this.status = status;
+    }
+
+    public String gerarRelatorio() {
+        String relatorio = "";
+        for (int i = 0; i < participantes.size(); i++) {
+            UsuarioIntercambio user = participantes.get(i);
+            relatorio += "ID: " + user.getId() + ", Nome: " + user.getNome() + "\n";
         }
-        return 0;
+        return relatorio;
     }
 
     public void setId(int id) {
@@ -38,20 +46,12 @@ public class Bolsa extends UsuarioIntercambio {
         return id;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setDestino(String destino) {
+        this.destino = destino;
     }
 
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setValor(float valor) {
-        this.valor = valor;
-    }
-
-    public float getValor() {
-        return valor;
+    public String getDestino() {
+        return destino;
     }
 
     public void setTipo(String tipo) {
@@ -60,5 +60,37 @@ public class Bolsa extends UsuarioIntercambio {
 
     public String getTipo() {
         return tipo;
+    }
+
+    public void setDuracao(int duracao) {
+        this.duracao = duracao;
+    }
+
+    public int getDuracao() {
+        return duracao;
+    }
+
+    public void setDataInicio(Date dataInicio) {
+        this.dataInicio = dataInicio;
+    }
+
+    public Date getDataInicio() {
+        return dataInicio;
+    }
+
+    public void setDataFim(Date dataFim) {
+        this.dataFim = dataFim;
+    }
+
+    public Date getDataFim() {
+        return dataFim;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getStatus() {
+        return status;
     }
 }

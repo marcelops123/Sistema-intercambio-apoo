@@ -1,14 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.intercambio;
 
-/**
- *
- * @author Marcelin
- */
+import java.util.ArrayList;
+
 public class ProgramaIntercambio {
+
     private int id;
     private String nome;
     private String descricao;
@@ -16,17 +11,96 @@ public class ProgramaIntercambio {
     private String destino;
     private String requisitos;
     private float custo;
-    
+    private String status;
+
+    private static ArrayList<UsuarioIntercambio> participantes = new ArrayList<>();
+    private static ArrayList<ProgramaIntercambio> programas = new ArrayList<>();
+
     public String inscreverParticipante(UsuarioIntercambio u) {
-        return "";
+        for (int i = 0; i < participantes.size(); i++) {
+            if (participantes.get(i).equals(u)) {
+                return "Usuário já inscrito.";
+            }
+        }
+        participantes.add(u);
+        return "Usuário inscrito com sucesso.";
     }
-    
+
     public boolean alterarStatus(String status) {
+        this.status = status;
         return true;
     }
-    
+
     public String gerarRelatorio() {
-        return "";
+        String relatorio = "Programa: " + nome + "\n";
+        for (int i = 0; i < participantes.size(); i++) {
+            UsuarioIntercambio u = participantes.get(i);
+            relatorio += "ID: " + u.getId() + ", Nome: " + u.getNome() + "\n";
+        }
+        return relatorio;
     }
-    
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDuracao(int duracao) {
+        this.duracao = duracao;
+    }
+
+    public int getDuracao() {
+        return duracao;
+    }
+
+    public void setDestino(String destino) {
+        this.destino = destino;
+    }
+
+    public String getDestino() {
+        return destino;
+    }
+
+    public void setRequisitos(String requisitos) {
+        this.requisitos = requisitos;
+    }
+
+    public String getRequisitos() {
+        return requisitos;
+    }
+
+    public void setCusto(float custo) {
+        this.custo = custo;
+    }
+
+    public float getCusto() {
+        return custo;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getStatus() {
+        return status;
+    }
 }

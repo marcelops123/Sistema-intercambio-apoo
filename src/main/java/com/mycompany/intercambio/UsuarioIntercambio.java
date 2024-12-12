@@ -1,18 +1,27 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.intercambio;
 
-/**
- *
- * @author Marcelin
- */
+import java.util.ArrayList;
+
 public class UsuarioIntercambio extends Usuario {
-    
+
+    private String statusVisto;
+
+    private static ArrayList<UsuarioIntercambio> usuariosIntercambio = new ArrayList<>();
+
     public String consultarStatusVisto() {
-        return "";
+        for (int i = 0; i < usuariosIntercambio.size(); i++) {
+            if (usuariosIntercambio.get(i).getId() == this.getId()) {
+                return usuariosIntercambio.get(i).statusVisto;
+            }
+        }
+        return "Status do visto não encontrado.";
     }
-    
-    
+
+    public void setStatusVisto(String statusVisto) {
+        this.statusVisto = statusVisto;
+    }
+
+    public String getStatusVisto() {
+        return statusVisto;
+    }
 }
