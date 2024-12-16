@@ -6,7 +6,7 @@ public class UsuarioIntercambio extends Usuario {
 
     private String statusVisto;
 
-    private static ArrayList<UsuarioIntercambio> usuariosIntercambio = new ArrayList<>();
+    static ArrayList<UsuarioIntercambio> usuariosIntercambio = new ArrayList<>();
 
     public String consultarStatusVisto() {
         for (int i = 0; i < usuariosIntercambio.size(); i++) {

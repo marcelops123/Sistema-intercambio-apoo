@@ -20,6 +20,25 @@ public class Usuario {
         return false;
     }
 
+    public boolean cadastrarUsuario() {
+        for (int i = 0; i < usuarios.size(); i++) {
+            if (usuarios.get(i).id == this.id || usuarios.get(i).email.equals(this.email)) {
+                return false;
+            }
+        }
+        usuarios.add(this);
+        return true;
+    }
+
+    public boolean verificarIdExistente(int id) {
+        for (int i = 0; i < usuarios.size(); i++) {
+            if (usuarios.get(i).id == id) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void setId(int id) {
         this.id = id;
     }

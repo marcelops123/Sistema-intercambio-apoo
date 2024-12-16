@@ -10,7 +10,11 @@ public class Avaliacao extends UsuarioIntercambio {
 
     private static ArrayList<Avaliacao> avaliacoes = new ArrayList<>();
 
-    public boolean registrarAvaliacao(int idAvaliacao) {
+   public boolean registrarAvaliacao(int idAvaliacao) {
+        if (!verificarIdExistente(idAvaliacao)) {
+            System.out.println("ID inválido. Não é possível registrar a avaliação.");
+            return false;
+        }
         for (int i = 0; i < avaliacoes.size(); i++) {
             if (avaliacoes.get(i).id == idAvaliacao) {
                 return false;
